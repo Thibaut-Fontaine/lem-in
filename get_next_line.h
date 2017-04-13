@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 05:55:37 by tfontain         ###   ########.fr       */
+/*   Created: 2016/12/05 20:36:22 by tfontain          #+#    #+#             */
+/*   Updated: 2017/03/30 18:44:27 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/includes/libft.h"
-#include "./lemin.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int		main(void)
-{
-	parser();
-	return (0);
-}
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include "./libft/includes/libft.h"
+
+# define BUFF_SIZE 1
+# define S (((t_endl*)current->content)->s)
+
+int				get_next_line(const int fd, char **line);
+
+#endif
