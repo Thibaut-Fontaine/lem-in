@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 11:17:05 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/13 11:30:41 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** init_tubes
 */
 
-int				init_tubes(char *name1, char *name2)
+int				init_tubes(t_block *b, char *name1, char *name2)
 {
 	printf("liaison entre : |%s| et |%s|\n", name1, name2);
 	return (0);
@@ -59,14 +59,14 @@ t_infos			init_blocks(t_infos info, int fl, char *name)
 ** parse the input and fill structures using init_blocks and init_tubes.
 */
 
-void			cut_tube(char *l)
+void			cut_tube(t_block *b, char *l)
 {
 	char		*sub1;
 	char		*sub2;
 
 	sub1 = ft_strsub(l, 0, ft_strchr(l, '-') - l);
 	sub2 = ft_strsub(l, ft_strchr(l, '-') - l + 1, ft_strlen(l));
-	init_tubes(sub1, sub2);
+	init_tubes(b, sub1, sub2);
 	ft_strdel(&sub1);
 	ft_strdel(&sub2);
 }
@@ -76,14 +76,14 @@ t_infos			tubes_parsing(t_infos info, char **last_line)
 	char		*l;
 
 	l = NULL;
-	cut_tube(*last_line);
+	cut_tube(info.cur, *last_line);
 	ft_strdel(last_line);
 	while (get_next_line(0, &l))
 	{
 		if (l[0] == 'L' || l[0] == '#')
 			;
 		else if (ft_strchr(l, '-') && !ft_strchr(l, ' '))
-			cut_tube(l);
+			cut_tube(info.cur, l);
 		ft_strdel(&l);
 	}
 	return (info);
