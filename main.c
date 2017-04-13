@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 09:34:59 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/13 11:04:19 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int				main(void)
 
 	info = parser();
 	printstruct(info.cur);
+	printf("nombre de fourmis : |%d|\n", info.ant);
 	return (0);
 }
