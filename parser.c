@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 11:30:41 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/13 14:49:21 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,31 @@
 
 int				init_tubes(t_block *b, char *name1, char *name2)
 {
+	int			id;
+
+	id = b->id;
+	while ((b = b->nxt))
+	{
+		if (ft_strcmp(b->name, name1) == 0)
+		{
+			if (b->tubes == NULL)
+			{
+				b->tubes = malloc(sizeof(t_list));
+				b->tubes->next = NULL;
+			}
+			else
+				while (b->tubes->next != NULL)
+					b->tubes = b->tubes->next;
+			b->tubes->content = find_block_name(b, name1);
+			//if (name1 == name2)
+			//	return (0);
+			//name1 = name2;//
+			//id = b->id;//
+			//b = b->nxt;//
+		}
+		if (b->id == id)
+			break ;
+	}
 	printf("liaison entre : |%s| et |%s|\n", name1, name2);
 	return (0);
 }
@@ -52,6 +77,7 @@ t_infos			init_blocks(t_infos info, int fl, char *name)
 	info.cur->nxt = next;
 	info.cur->id = fl == 0 ? ++count : fl;
 	info.cur->name = name;
+	info.cur->tubes = NULL;
 	return (info);
 }
 
