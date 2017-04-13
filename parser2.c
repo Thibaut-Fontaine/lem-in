@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lemin.h                                            :+:      :+:    :+:   */
+/*   parser2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 13:55:56 by tfontain         ###   ########.fr       */
+/*   Created: 2017/04/13 13:14:34 by tfontain          #+#    #+#             */
+/*   Updated: 2017/04/13 14:03:56 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEMIN_H
-# define LEMIN_H
+#include "./lemin.h"
 
-# include "./get_next_line.h"
-# include <stdio.h>
-
-typedef struct		s_block
+t_block		*find_block_name(t_block *b, char *name)
 {
-	int				id;
-	char			*name;
-	t_list			*tubes;
-	struct s_block	*nxt;
-}					t_block;
+	int		id;
 
-typedef struct
-{
-	int				ant;
-	t_block			*cur;
-}					t_infos;
-
-t_infos				parser(void);
-void				error(void);
-t_block				*find_block_name(t_block *b, char *name);
-
-#endif
+	id = b->id;
+	while ((b = b->nxt))
+	{
+		if (ft_strcmp(b->name, name) == 0)
+			break ;
+		if (b->id == id)
+			return (NULL);
+	}
+	return (b);
+}
