@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 08:53:38 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/13 09:37:16 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 ** add a new block and init all in, exept the tubes
+** the start will always have id = 1 and the end id = 2.
 */
 
 t_infos			init_blocks(t_infos info, int fl, char *name)
@@ -64,7 +65,6 @@ t_infos			parser(void)
 			fl = 2;
 		else if (line[0] != 'L' && line[0] != '#')
 		{
-			// init_blocks segfault
 			info = init_blocks(info, fl,
 					ft_strsub(line, 0, ft_strchr(line, ' ') - line));
 			fl = 0;
