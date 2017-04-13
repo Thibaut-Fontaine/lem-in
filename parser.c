@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 07:52:15 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/13 08:53:38 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_infos			init_blocks(t_infos info, int fl, char *name)
 
 	if (info.cur != NULL)
 		id = info.cur->id;
-	while (info.cur != NULL || info.cur->nxt->id != id
-			|| info.cur->id != info.cur->nxt->id)
+	while (info.cur != NULL && info.cur->nxt->id != id
+			&& info.cur->id != info.cur->nxt->id)
 		info.cur = info.cur->nxt;
 	if (info.cur != NULL)
 	{
@@ -64,6 +64,7 @@ t_infos			parser(void)
 			fl = 2;
 		else if (line[0] != 'L' && line[0] != '#')
 		{
+			// init_blocks segfault
 			info = init_blocks(info, fl,
 					ft_strsub(line, 0, ft_strchr(line, ' ') - line));
 			fl = 0;
