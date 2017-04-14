@@ -6,13 +6,12 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 11:04:19 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/14 14:39:40 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/includes/libft.h"
 #include "./lemin.h"
-#include <math.h> //
 
 int				printstruct(t_block *b) // to remove
 {
@@ -35,6 +34,17 @@ int				main(void)
 
 	info = parser();
 	printstruct(info.cur);
-	printf("nombre de fourmis : |%d|\n", info.ant);
+	printf("\nnombre de fourmis : |%d|\n", info.ant);
+	info.cur = find_block_name(info.cur, "0");
+	if (info.cur->tubes)
+	printf("le block : %s\n", info.cur->name);
+	t_tubes		*cur;
+
+	cur = info.cur->tubes;
+	while (cur != NULL)
+	{
+		printf("contient : %s\n", cur->content->name);
+		cur = cur->next;
+	}
 	return (0);
 }
