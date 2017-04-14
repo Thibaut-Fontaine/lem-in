@@ -6,14 +6,15 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 06:49:18 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/13 06:50:30 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/14 16:31:32 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lemin.h"
 
-void	error()
+int		error()
 {
 	ft_putstr("ERROR\n");
 	exit(-1);
+	return (1);
 }

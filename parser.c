@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/14 15:38:53 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/14 17:53:11 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void			cut_tube(t_block *b, char *l)
 	char		*sub1;
 	char		*sub2;
 
+	if (ft_strchr(l, '-')) // segfault si il ny a pas les subs
+		error();
 	sub1 = ft_strsub(l, 0, ft_strchr(l, '-') - l);
 	sub2 = ft_strsub(l, ft_strchr(l, '-') - l + 1, ft_strlen(l));
 	fill_tube(b, sub1, sub2);
@@ -99,12 +101,14 @@ t_infos			parser(void)
 			fl = 1;
 		else if (ft_strcmp(l, "##end") == 0)
 			fl = 2;
-		else if (l[0] != 'L' && l[0] != '#')
+		else if (*l != 'L' && *l != '#' && (!ft_strchr(l, ' ') ? error() : 1))
 		{
 			info = init_blocks(info, fl,
 					ft_strsub(l, 0, ft_strchr(l, ' ') - l));
 			fl = 0;
 		}
+		else
+			error();
 		ft_strdel(&l);
 	}
 	return (tubes_parsing(info, &l));

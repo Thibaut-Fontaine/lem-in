@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/14 15:00:42 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/14 16:31:14 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct
 }					t_infos;
 
 t_infos				parser(void);
-void				error(void);
+int					error(void);
 t_block				*find_block_name(t_block *b, char *name);
 void				fill_tube(t_block *b, char *name1, char *name2);
 
