@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/14 17:53:11 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/15 15:07:04 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,9 @@ void			cut_tube(t_block *b, char *l)
 	char		*sub1;
 	char		*sub2;
 
-	if (ft_strchr(l, '-')) // segfault si il ny a pas les subs
-		error();
+	//if (ft_strchr(l, '-')) // segfault si il ny a pas les subs
+	//	error();
+	//
 	sub1 = ft_strsub(l, 0, ft_strchr(l, '-') - l);
 	sub2 = ft_strsub(l, ft_strchr(l, '-') - l + 1, ft_strlen(l));
 	fill_tube(b, sub1, sub2);
@@ -78,6 +79,8 @@ t_infos			tubes_parsing(t_infos info, char **last_line)
 			;
 		else if (ft_strchr(l, '-') && !ft_strchr(l, ' '))
 			cut_tube(info.cur, l);
+		else
+			error();
 		ft_strdel(&l);
 	}
 	return (info);
@@ -97,17 +100,15 @@ t_infos			parser(void)
 	while (get_next_line(0, &l) == 1 && !(*l != '#' && *l != 'L'
 				&& ft_strchr(l, '-') && !ft_strchr(l, ' ')))
 	{
-		if (ft_strcmp(l, "##start") == 0)
-			fl = 1;
-		else if (ft_strcmp(l, "##end") == 0)
-			fl = 2;
+		if ((ft_strequ(l, "##start") && (fl = 1)) || (ft_strequ(l, "##end") && (fl = 2)))
+			; // ajouter verification si il y a plus d'un start ou d'un end, il faut ERROR.
 		else if (*l != 'L' && *l != '#' && (!ft_strchr(l, ' ') ? error() : 1))
 		{
 			info = init_blocks(info, fl,
 					ft_strsub(l, 0, ft_strchr(l, ' ') - l));
 			fl = 0;
 		}
-		else
+		else if (*l != 'L' && *l != '#')
 			error();
 		ft_strdel(&l);
 	}
