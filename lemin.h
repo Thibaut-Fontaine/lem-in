@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/15 17:42:08 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/16 00:48:13 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 # define LEMIN_H
 
 # include "./get_next_line.h"
-# include <stdio.h> //
-
-typedef struct		s_block t_block;
-typedef struct		s_tubes t_tubes;
+# include <stdio.h>
 
 typedef struct		s_tubes
 {
-	t_block			*content;
-	t_tubes			*next;
+	struct s_block	*content;
+	struct s_tubes	*next;
 }					t_tubes;
 
 typedef struct		s_block
 {
 	int				id;
 	char			*name;
-	t_tubes			*tubes;
-	t_block			*nxt;
+	struct s_tubes	*tubes;
+	struct s_block	*nxt;
 }					t_block;
 
-typedef struct
+typedef struct		s_infos
 {
 	int				ant;
-	t_block			*cur;
+	struct s_block	*cur;
 }					t_infos;
 
 t_infos				parser(void);
