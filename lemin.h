@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/15 17:26:01 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/15 17:42:08 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct		s_block
 {
 	int				id;
 	char			*name;
-	t_tubes	*tubes;
-	t_block	*nxt;
+	t_tubes			*tubes;
+	t_block			*nxt;
 }					t_block;
 
 typedef struct
