@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/14 16:31:14 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/15 17:26:01 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LEMIN_H
 
 # include "./get_next_line.h"
-# include <stdio.h> // delete after tests
+# include <stdio.h> //
 
 typedef struct		s_block t_block;
 typedef struct		s_tubes t_tubes;
@@ -42,6 +42,7 @@ typedef struct
 t_infos				parser(void);
 int					error(void);
 t_block				*find_block_name(t_block *b, char *name);
+int					find_block_id(t_block *b, int id);
 void				fill_tube(t_block *b, char *name1, char *name2);
 
 #endif

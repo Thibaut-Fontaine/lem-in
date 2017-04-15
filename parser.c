@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/15 15:07:04 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/15 17:27:41 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@ void			cut_tube(t_block *b, char *l)
 	char		*sub1;
 	char		*sub2;
 
-	//if (ft_strchr(l, '-')) // segfault si il ny a pas les subs
-	//	error();
-	//
+	if (ft_strchr(l, '-') == NULL)
+		error();
 	sub1 = ft_strsub(l, 0, ft_strchr(l, '-') - l);
 	sub2 = ft_strsub(l, ft_strchr(l, '-') - l + 1, ft_strlen(l));
 	fill_tube(b, sub1, sub2);
@@ -86,22 +85,39 @@ t_infos			tubes_parsing(t_infos info, char **last_line)
 	return (info);
 }
 
+void			first_line(t_infos *info)
+{
+	char		*l;
+	int			i;
+
+	i = 0;
+	get_next_line(0, &l);
+	while (ft_isdigit(l[i]) && l[i])
+		++i;
+	if (l[i] != 0)
+		error();
+	info->ant = ft_atoi(l);
+	ft_strdel(&l);
+	info->cur = NULL;
+	if (info->ant <= 0)
+		error();
+}
+
 t_infos			parser(void)
 {
 	t_infos		info;
 	char		*l;
 	int			fl;
 
-	get_next_line(0, &l);
-	info.ant = ft_atoi(l);
-	ft_strdel(&l);
-	info.cur = NULL;
-	info.ant <= 0 ? error() : (fl = 0);
+	first_line(&info);
+	fl = 0;
 	while (get_next_line(0, &l) == 1 && !(*l != '#' && *l != 'L'
 				&& ft_strchr(l, '-') && !ft_strchr(l, ' ')))
 	{
-		if ((ft_strequ(l, "##start") && (fl = 1)) || (ft_strequ(l, "##end") && (fl = 2)))
-			; // ajouter verification si il y a plus d'un start ou d'un end, il faut ERROR.
+		if (ft_strequ(l, "##start") && (fl = 1))
+			find_block_id(info.cur, 1) == 1 ? error() : 0;
+		else if (ft_strequ(l, "##end") && (fl = 2))
+			find_block_id(info.cur, 2) == 1 ? error() : 0;
 		else if (*l != 'L' && *l != '#' && (!ft_strchr(l, ' ') ? error() : 1))
 		{
 			info = init_blocks(info, fl,

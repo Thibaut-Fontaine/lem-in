@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 13:14:34 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/14 15:31:16 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/15 17:28:55 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,23 @@ t_block		*find_block_name(t_block *b, char *name)
 			error();
 	}
 	return (b);
+}
+
+int			find_block_id(t_block *b, int id)
+{
+	int		sid;
+
+	if (b == NULL)
+		return (0);
+	if (b->id == id)
+		return (1);
+	sid = b->id;
+	while ((b = b->nxt))
+	{
+		if (b->id == id)
+			break ;
+		if (b->id == sid)
+			return (0);
+	}
+	return (1);
 }
