@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 13:14:34 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/15 17:28:55 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/17 00:51:29 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,26 @@ t_block		*find_block_name(t_block *b, char *name)
 	return (b);
 }
 
-int			find_block_id(t_block *b, int id)
+/*
+** find a block with is id
+** if no match or if the struct* sent is NULL, returns NULL.
+*/
+
+t_block		*find_block_id(t_block *b, int id)
 {
 	int		sid;
 
 	if (b == NULL)
-		return (0);
+		return (NULL);
 	if (b->id == id)
-		return (1);
+		return (b);
 	sid = b->id;
 	while ((b = b->nxt))
 	{
 		if (b->id == id)
 			break ;
 		if (b->id == sid)
-			return (0);
+			return (NULL);
 	}
-	return (1);
+	return (b);
 }

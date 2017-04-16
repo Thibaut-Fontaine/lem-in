@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/15 17:27:41 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/17 00:47:28 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ t_infos			parser(void)
 				&& ft_strchr(l, '-') && !ft_strchr(l, ' ')))
 	{
 		if (ft_strequ(l, "##start") && (fl = 1))
-			find_block_id(info.cur, 1) == 1 ? error() : 0;
+			find_block_id(info.cur, 1) != NULL ? error() : 0;
 		else if (ft_strequ(l, "##end") && (fl = 2))
-			find_block_id(info.cur, 2) == 1 ? error() : 0;
+			find_block_id(info.cur, 2) != NULL ? error() : 0;
 		else if (*l != 'L' && *l != '#' && (!ft_strchr(l, ' ') ? error() : 1))
 		{
 			info = init_blocks(info, fl,
