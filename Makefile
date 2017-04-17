@@ -6,7 +6,7 @@
 #    By: tfontain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/26 14:26:04 by tfontain          #+#    #+#              #
-#    Updated: 2017/04/15 15:57:01 by tfontain         ###   ########.fr        #
+#    Updated: 2017/04/17 06:10:43 by tfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = clang
 HEADER = ./lemin.h
 FLAG = -Wall -Wextra -Werror -O3
 OPTION = -c -I $(HEADER)
-SRC = ./main.c ./parser.c ./parser2.c ./error.c ./get_next_line.c
+SRC = ./main.c ./parser.c ./parser2.c ./error.c ./get_next_line.c ./solver.c
 
 OBJ = $(addsuffix .o,$(basename $(SRC)))
 

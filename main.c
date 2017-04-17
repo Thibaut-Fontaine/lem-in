@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/17 00:50:23 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/17 06:13:37 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ int				main(void)
 
 	info = parser();
 
-	printf("ok\n");
-	// toast :
+	// toast 1 :
+	printf("how_far : %d\n", how_far(find_block_id(info.cur, 2)));
+	// toast 2 :
 	printstruct(info.cur);
 	printf("\nnombre de fourmis : |%d|\n", info.ant);
-	info.cur = find_block_id(info.cur, 1);
+	info.cur = find_block_id(info.cur, 2);
 	if (info.cur->tubes)
 	printf("le block : %s\n", info.cur->name);
 	t_tubes		*cur;

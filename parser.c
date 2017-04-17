@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/17 00:47:28 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/17 03:30:13 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_infos			init_blocks(t_infos info, int fl, char *name)
 	info.cur->nxt = next;
 	info.cur->id = fl == 0 ? ++count : fl;
 	info.cur->name = name;
+	info.cur->ant = id == 1 ? info.ant : 0; // nbr fourmis init a 0
 	info.cur->tubes = NULL;
 	return (info);
 }
