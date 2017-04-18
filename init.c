@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 00:37:45 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/18 09:24:50 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/18 17:03:56 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ int				init_block_weight(t_block *b)
 	}
 	return (0); // il faut delete tous les blocks vides et recommencer
 	// parceque ces blocks sont non-atteignables
-}
+}	// utiliser ensuite la structure ainsi initialisee pour toujours
+	//se diriger vers un weight plus faible que le block courant.
 
 /*
 ** init all the block->ant with the specified int, exept the start and the end
