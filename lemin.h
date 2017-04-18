@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/17 06:09:45 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/18 05:51:43 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct		s_block
 	int				id;
 	char			*name;
 	int				ant;
+	int				check;
+	int				weight;
 	struct s_tubes	*tubes;
 	struct s_block	*nxt;
 }					t_block;
@@ -42,7 +44,9 @@ int					error(void);
 t_block				*find_block_name(t_block *b, char *name);
 t_block				*find_block_id(t_block *b, int id);
 void				fill_tube(t_block *b, char *name1, char *name2);
-t_block				*find_closest(t_block *b);
-int					how_far(t_block *b);
+t_block				*find_closest(t_block *b, t_block *goal);
+void				init_block_ant(t_block *b, int n);
+void				init_block_check(t_block *b, int n);
+
 
 #endif
