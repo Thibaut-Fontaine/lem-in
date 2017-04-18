@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 00:37:45 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/18 06:24:29 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/18 09:24:50 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,12 @@ int				init_block_weight(t_block *b)
 {
 	t_tubes		*tube;
 
+	preinit_weight(b);
 	b = find_block_id(b, 2);
 	b->weight = 1;
 	while (b)
 	{
+		b->check = 1;
 		if (already_filled(b))
 			return (1);
 		tube = b->tubes;
@@ -95,7 +97,8 @@ int				init_block_weight(t_block *b)
 		}
 		b = next_usable_block(b);
 	}
-	return (0);
+	return (0); // il faut delete tous les blocks vides et recommencer
+	// parceque ces blocks sont non-atteignables
 }
 
 /*
