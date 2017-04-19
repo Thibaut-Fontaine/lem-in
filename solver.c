@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/20 00:43:26 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/20 00:44:43 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void			follow_the_weights(t_block *b)
 	while (rank)
 	{
 		b = find_block_weight(b, rank);
-		//printf("bonjour\n");
+		//printf("bonjour\n"); // segfault chelou !
 		id = b->id;
 		while ((b = find_block_weight(b, rank)))
 		{
