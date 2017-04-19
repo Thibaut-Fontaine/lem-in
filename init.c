@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 00:37:45 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 15:41:13 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:46:34 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int				have_tube_empty(t_block *b)
 
 
 /*
-** return the next block with a weight upper than 0
+** return the next block with a weight upper than 0 (who have weight)
 ** and only if at least one of his tube dont have weight yet
 ** if there is no, return NULL
 */
@@ -119,8 +119,7 @@ int				init_block_weight(t_block *b)
 		}
 		b = next_usable_block(b);	// cherche un block qui a un weight > 0 et dont au moins un des tubes est vide
 	}
-	return (0); // il faut delete tous les blocks vides et recommencer
-	// parceque ces blocks sont non-atteignables
+	return (0); // si chaque block ayant un poids a tous ses tubes qui sont pleins, return 0.
 }	// utiliser ensuite la structure ainsi initialisee pour toujours
 	//se diriger vers un weight plus faible que le block courant.
 
