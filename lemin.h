@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/18 06:33:56 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:51:32 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ t_block				*find_closest(t_block *b, t_block *goal);
 void				init_block_ant(t_block *b, int n);
 void				init_block_check(t_block *b, int n);
 void				erase_block(t_block *b);
+int					init_block_weight(t_block *b);
 
 #endif

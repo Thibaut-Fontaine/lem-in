@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/18 12:19:22 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 17:06:18 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int				printstruct(t_block *b) // to remove
 	b = b->nxt;
 	while (b->id != id)
 	{
-		printf("id : %d | name : %s | check : %d | ant : %d\n",
-				b->id, b->name, b->check, b->ant);
+		printf("id : %d | name : %s | weight : %d\n",
+				b->id, b->name, b->weight);
 		b = b->nxt;
 	}
-		printf("id : %d | name : %s | check : %d | ant : %d\n",
-				b->id, b->name, b->check, b->ant);
+	printf("id : %d | name : %s | weight : %d\n",
+			b->id, b->name, b->weight);
 	return (1);
 }
 
@@ -40,12 +40,13 @@ int				main(void)
 	printstruct(info.cur);
 	printf("----------------------\n");
 	//erase_block(find_block_id(info.cur, 3));
+	init_block_weight(info.cur);
 	printstruct(info.cur);
 	printf("----------------------\n");
-	printf("\nnombre de fourmis : |%d|\n", info.ant);
-	info.cur = find_block_id(info.cur, 2);
-	if (info.cur->tubes)
-	printf("le block : %s\n", info.cur->name);
+	//printf("\nnombre de fourmis : |%d|\n", info.ant);
+	//info.cur = find_block_id(info.cur, 2);
+	//if (info.cur->tubes)
+	//printf("le block : %s\n", info.cur->name);
 	/*t_tubes		*cur;
 
 	cur = info.cur->tubes;

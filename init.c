@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 00:37:45 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 16:46:34 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 16:48:43 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,13 @@ int				init_block_weight(t_block *b)
 {
 	t_tubes		*tube;
 
-	init_block_check(b, 0);				// initialise tous les check a 0
+	//init_block_check(b, 0);				// initialise tous les check a 0
 	preinit_weight(b);					// initialiste tous les blocks a 0
 	b = find_block_id(b, 2);			// cherche le block de fin
 	b->weight = 1;						// met son weight a 1
 	while (b)								// tant que b != NULL
 	{
-		b->check = 1;
+		//b->check = 1;
 		if (already_filled(b))				// si tous les blocks ont un weight, return 1
 			return (1);
 		tube = b->tubes;					// on recupere le tube du block
