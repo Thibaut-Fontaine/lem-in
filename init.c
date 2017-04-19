@@ -6,14 +6,14 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 00:37:45 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/18 17:03:56 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 15:41:13 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lemin.h"
 
 /*
-** init allthe weight with 0
+** init all the ->weight with 0
 */
 
 void			preinit_weight(t_block *b)
@@ -30,7 +30,28 @@ void			preinit_weight(t_block *b)
 }
 
 /*
+** return 1 if at least one of the tubes of the block is empty
+** return 0 else.
+*/
+
+int				have_tube_empty(t_block *b)
+{
+	t_tubes		*tube;
+
+	tube = b->tubes;
+	while (tube)
+	{
+		if (tube->content->weight == 0)
+			return (1);
+		tube = tube->next;
+	}
+	return (0);
+}
+
+
+/*
 ** return the next block with a weight upper than 0
+** and only if at least one of his tube dont have weight yet
 ** if there is no, return NULL
 */
 
@@ -41,7 +62,7 @@ t_block			*next_usable_block(t_block *b)
 	id = b->id;
 	while ((b = b->nxt))
 	{
-		if (b->weight > 0)
+		if (b->weight > 0 && have_tube_empty(b))
 			return (b);
 		if (b->id == id)
 			break ;
@@ -50,7 +71,7 @@ t_block			*next_usable_block(t_block *b)
 }
 
 /*
-** return 1 if all blocks have a weight, 0 else
+** return 1 if all blocks have a weight different than 0 ; return 0 else
 */
 
 int				already_filled(t_block *b)
@@ -71,7 +92,7 @@ int				already_filled(t_block *b)
 /*
 ** init all the block->weight with int calculated from the distance between
 ** the current block and the ending block ; as following :
-** end->weight = 0, end->tube->content->weight = 1, etc.
+** end->weight = 1, end->tube->content->weight = 2, etc.
 ** return 1 for success, return 0 if there is no way to fill all the blocks
 */
 
@@ -79,23 +100,24 @@ int				init_block_weight(t_block *b)
 {
 	t_tubes		*tube;
 
-	preinit_weight(b);
-	b = find_block_id(b, 2);
-	b->weight = 1;
-	while (b)
+	init_block_check(b, 0);				// initialise tous les check a 0
+	preinit_weight(b);					// initialiste tous les blocks a 0
+	b = find_block_id(b, 2);			// cherche le block de fin
+	b->weight = 1;						// met son weight a 1
+	while (b)								// tant que b != NULL
 	{
 		b->check = 1;
-		if (already_filled(b))
+		if (already_filled(b))				// si tous les blocks ont un weight, return 1
 			return (1);
-		tube = b->tubes;
-		while (tube)
+		tube = b->tubes;					// on recupere le tube du block
+		while (tube)									// pour chaque tube
 		{
-			if (tube->content->weight > b->weight + 1
-					|| tube->content->weight == 0)
-				tube->content->weight = b->weight + 1;
+			if (tube->content->weight > b->weight + 1	// si le tube courant a un weight plus fort
+					|| tube->content->weight == 0)		// que le block courant, ou si il est vide,
+				tube->content->weight = b->weight + 1;	// ecrit weight du block + 1 dans le tube.
 			tube = tube->next;
 		}
-		b = next_usable_block(b);
+		b = next_usable_block(b);	// cherche un block qui a un weight > 0 et dont au moins un des tubes est vide
 	}
 	return (0); // il faut delete tous les blocks vides et recommencer
 	// parceque ces blocks sont non-atteignables

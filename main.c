@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/18 09:29:38 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/18 12:19:22 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ int				main(void)
 	info.cur = find_block_id(info.cur, 2);
 	if (info.cur->tubes)
 	printf("le block : %s\n", info.cur->name);
-	t_tubes		*cur;
+	/*t_tubes		*cur;
 
 	cur = info.cur->tubes;
 	while (cur != NULL)
 	{
 		printf("contient : %s\n", cur->content->name);
 		cur = cur->next;
-	}
+	}*/
 	while (1)
 		;
 	return (0);
