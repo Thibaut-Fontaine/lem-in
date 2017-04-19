@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 17:06:18 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 18:21:19 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int				printstruct(t_block *b) // to remove
 	b = b->nxt;
 	while (b->id != id)
 	{
-		printf("id : %d | name : %s | weight : %d\n",
-				b->id, b->name, b->weight);
+		printf("id : %d | name : %s | weight : %d | ant : %d\n",
+				b->id, b->name, b->weight, b->ant);
 		b = b->nxt;
 	}
-	printf("id : %d | name : %s | weight : %d\n",
-			b->id, b->name, b->weight);
+	printf("id : %d | name : %s | weight : %d | ant : %d\n",
+			b->id, b->name, b->weight, b->ant);
 	return (1);
 }
 
