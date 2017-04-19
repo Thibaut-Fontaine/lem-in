@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 23:33:06 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/20 00:35:45 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int				main(void)
 	info = parser();
 
 	//erase_block(find_block_id(info.cur, 3));
-	printf("----------------------\n");
-	init_block_weight(info.cur);
+	/*printf("----------------------\n");
+	init_block_weight(info.cur);*/
 	printstruct(info.cur);
 	printf("----------------------\n");
 	//
@@ -54,6 +54,9 @@ int				main(void)
 	printf("----------------------\n");
 	printstruct(info.cur);
 	printf("----------------------\n");
+
+
+
 	//printf("\nnombre de fourmis : |%d|\n", info.ant);
 	//info.cur = find_block_id(info.cur, 2);
 	//if (info.cur->tubes)

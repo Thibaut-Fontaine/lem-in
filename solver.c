@@ -6,11 +6,14 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 23:39:52 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/20 00:43:26 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lemin.h"
+
+#include <stdio.h> // virer
+
 
 /*
 ** find the next block in the structure with the specified weight
@@ -128,6 +131,7 @@ void			follow_the_weights(t_block *b)
 	while (rank)
 	{
 		b = find_block_weight(b, rank);
+		//printf("bonjour\n");
 		id = b->id;
 		while ((b = find_block_weight(b, rank)))
 		{
