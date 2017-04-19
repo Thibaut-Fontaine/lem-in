@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 21:22:33 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 23:39:52 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ char			*generate_operation(char *name, int ant)
 char			*move_ant_to_lower_tube(t_block *b)
 {
 	t_tubes		*tube;
-	char		*ret;
-	char		*tmp;
 
 	tube = b->tubes;
 	while (tube)
@@ -85,14 +83,18 @@ char			*move_ant_to_lower_tube(t_block *b)
 }
 
 /*
-** move the ants of the start in all the lower tubes who dont have ant yet
+** move the ants of the start block in all the lower tubes
+** who dont have ant yet
+** attribute them a number (1 to max_ants)
+** and print the current move at the specified format
 */
 
-move_ant_from_start(t_block *b)
+void			move_ant_from_start(t_block *b)
 {
 	t_tubes		*tube;
 	static int	max_ants = -1;
-
+	char		*tmp;
+	
 	if (max_ants == -1)
 		max_ants = b->ant;
 	tube = b->tubes;
@@ -103,40 +105,45 @@ move_ant_from_start(t_block *b)
 			{
 				tube->content->ant = max_ants - b->ant + 1; // genere le numero de la fourmi
 				--b->ant;
+				ft_putstr(tmp = generate_operation(tube->content->name, tube->content->ant));
+				free(tmp);
+				ft_putchar(' '); // sauf si c'est la fin de la ligne
 			}
 		tube = tube->next;
 	}
-
 }
 
 /*
 **
 */
 
-follow_the_weights(t_block *b)
+void			follow_the_weights(t_block *b)
 {
 	int			rank;
 	int			id;
-	t_block		*start;
 	char		*op;
-	
+
 	init_block_ant(b, 0);
 	rank = 1;
-	while (rank) // s'arreter quand on est a start
+	while (rank)
 	{
 		b = find_block_weight(b, rank);
 		id = b->id;
 		while ((b = find_block_weight(b, rank)))
 		{
-			if (b == find_block_id(b, 2))
+			if (b == find_block_id(b, 1))
 			{
 				move_ant_from_start(b);
 				rank = -1;
 				break ;
 			}
-			else if (b->ant && b != find_block_id(b, 2))
+			else if (b->ant)
 				if ((op = move_ant_to_lower_tube(b)) != NULL)
-					;
+				{
+					ft_putstr(op);
+					free(op);
+					ft_putchar(' ');
+				}
 			if (b->id == id)
 				break ;
 		}

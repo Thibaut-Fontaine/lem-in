@@ -6,12 +6,13 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 18:21:19 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 23:33:06 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/includes/libft.h"
 #include "./lemin.h"
+#include <stdio.h> //
 
 int				printstruct(t_block *b) // to remove
 {
@@ -36,11 +37,21 @@ int				main(void)
 
 	info = parser();
 
+	//erase_block(find_block_id(info.cur, 3));
 	printf("----------------------\n");
+	init_block_weight(info.cur);
 	printstruct(info.cur);
 	printf("----------------------\n");
-	//erase_block(find_block_id(info.cur, 3));
-	init_block_weight(info.cur);
+	//
+	//
+	while (it_is_finish(info.cur) == 0)
+	{
+		follow_the_weights(info.cur);
+		ft_putchar('\n');
+	}
+	//
+	//
+	printf("----------------------\n");
 	printstruct(info.cur);
 	printf("----------------------\n");
 	//printf("\nnombre de fourmis : |%d|\n", info.ant);
@@ -55,7 +66,7 @@ int				main(void)
 		printf("contient : %s\n", cur->content->name);
 		cur = cur->next;
 	}*/
-	while (1)
-		;
+	//while (1)
+	//	;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 06:34:07 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/18 09:25:44 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 23:32:46 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,24 @@ void			erase_block(t_block *b)
 	}
 	free(to_erase->name);
 	free(to_erase);
+}
+
+/*
+** return 0 if all the block are empty (exept the ending block)
+** return 1 else
+*/
+
+int			it_is_finish(t_block *b)
+{
+	int		id;
+
+	id = b->id;
+	while ((b = b->nxt))
+	{
+		if (b->ant != 0 && b != find_block_id(b, 2))
+			return (0);
+		if (b->id == id)
+			break ;
+	}
+	return (1);
 }

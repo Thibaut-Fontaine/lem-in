@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 19:11:14 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/19 23:06:22 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LEMIN_H
 
 # include "./get_next_line.h"
-# include <stdio.h> //
 
 typedef struct		s_tubes
 {
@@ -50,5 +49,7 @@ void				init_block_check(t_block *b, int n);
 void				erase_block(t_block *b);
 int					init_block_weight(t_block *b);
 char				*generate_operation(char *name, int ant);
+void				follow_the_weights(t_block *b);
+int					it_is_finish(t_block *b);
 
 #endif
