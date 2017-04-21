@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 04:32:13 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 08:21:21 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ t_infos			init_blocks(t_infos info, int fl, char *name)
 	static int	count = 2;
 	t_block		*next;
 
-	if (info.cur != NULL)
-		id = info.cur->id;
+	(info.cur != NULL && (id = info.cur->id));
 	while (info.cur != NULL && info.cur->nxt->id != id
 			&& info.cur->id != info.cur->nxt->id)
 		info.cur = info.cur->nxt;
