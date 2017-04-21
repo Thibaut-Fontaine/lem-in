@@ -1,0 +1,26 @@
+5
+##start
+start 7 7
+##end
+end 1 1
+salle_de_bain 9 9
+salle_a_manger 2 2
+salon 4 4
+chambre#1 5 5
+chambre#2 8 8
+chambre#3 7 7
+start-chambre#1
+#chambre#1-salle_de_bain
+start-chambre#2
+start-chambre#3
+chambre#3-end
+chambre#2-end
+#
+#            /------START--------\
+#           /         |           \
+#   CHAMBRE#3    CHAMBRE#2       CHAMBRE#1
+#         |          |                  \---------\
+#         \          |                          SALLE DE BAIN
+#          \--------END        SALON
+#
+#
