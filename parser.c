@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 08:21:21 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 08:26:47 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_infos			tubes_parsing(t_infos info, char **last_line)
 	l = NULL;
 	cut_tube(info.cur, *last_line);
 	ft_strdel(last_line);
-	while (get_next_line(0, &l))
+	while (gnl_print(0, &l))
 	{
 		if (l[0] == 'L' || l[0] == '#')
 			;
@@ -91,7 +91,7 @@ void			first_line(t_infos *info)
 	int			i;
 
 	i = 0;
-	get_next_line(0, &l);
+	gnl_print(0, &l);
 	while (ft_isdigit(l[i]) && l[i])
 		++i;
 	if (l[i] != 0)
@@ -111,7 +111,7 @@ t_infos			parser(void)
 
 	first_line(&info);
 	fl = 0;
-	while (get_next_line(0, &l) == 1 && !(*l != '#' && *l != 'L'
+	while (gnl_print(0, &l) == 1 && !(*l != '#' && *l != 'L'
 				&& ft_strchr(l, '-') && !ft_strchr(l, ' ')))
 	{
 		if (ft_strequ(l, "##start") && (fl = 1))

@@ -6,7 +6,7 @@
 #    By: tfontain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/26 14:26:04 by tfontain          #+#    #+#              #
-#    Updated: 2017/04/21 03:14:56 by tfontain         ###   ########.fr        #
+#    Updated: 2017/04/21 08:27:35 by tfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADER = ./lemin.h
 FLAG = -Wall -Wextra -Werror
 OPTION = -c -I $(HEADER)
 SRC = ./main.c ./parser.c ./parser2.c ./error.c ./get_next_line.c ./solver.c \
-	  ./init.c ./blockfuncs.c
+	  ./init.c ./blockfuncs.c ./gnl_print.c
 
 OBJ = $(addsuffix .o,$(basename $(SRC)))
 

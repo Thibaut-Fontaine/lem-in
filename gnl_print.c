@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   gnl_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 08:10:44 by tfontain         ###   ########.fr       */
+/*   Created: 2017/04/21 08:23:32 by tfontain          #+#    #+#             */
+/*   Updated: 2017/04/21 08:25:39 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lemin.h"
 
-int				main(void)
+int			gnl_print(const int fd, char **line)
 {
-	t_infos		info;
+	int		ret;
 
-	info = parser();
-	init_block_ant(info.cur, 0);
-	while (it_is_finish(info.cur) == 0)
-	{
-		follow_the_weights(info.cur);
-		ft_putchar('\n');
-	}
-	return (0);
+	ret = get_next_line(fd, line);
+	ft_putstr(*line);
+	ft_putchar('\n');
+	return (ret);
 }
