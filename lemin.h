@@ -6,13 +6,14 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 04:30:34 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:39:19 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEMIN_H
 # define LEMIN_H
 
+#include "./libft/includes/libft.h"
 # include "./get_next_line.h"
 
 typedef struct		s_tubes

@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 04:36:32 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:54:44 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void			follow_the_weights(t_block *b)
 				{
 					ft_putstr(op);
 					free(op);
-					ft_putchar(' ');
+					ft_putchar(' '); // sauf si fin de ligne
 				}
 			}
 			if (b->id == id)
