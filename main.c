@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/20 00:35:45 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:04:44 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,27 @@ int				main(void)
 	//erase_block(find_block_id(info.cur, 3));
 	/*printf("----------------------\n");
 	init_block_weight(info.cur);*/
-	printstruct(info.cur);
-	printf("----------------------\n");
+	//printstruct(info.cur);
+	//printf("---------------------->\n");
+	//printf("---------------------->\n");
 	//
 	//
+	init_block_ant(info.cur, 0);
 	while (it_is_finish(info.cur) == 0)
 	{
+
 		follow_the_weights(info.cur);
 		ft_putchar('\n');
+		//printstruct(info.cur);
+		//follow_the_weights(info.cur);
+		//ft_putchar('\n');
+		//printstruct(info.cur);
 	}
 	//
 	//
-	printf("----------------------\n");
-	printstruct(info.cur);
-	printf("----------------------\n");
+	//printf("----------------------\n");
+	//printstruct(info.cur);
+	//printf("----------------------\n");
 
 
 

@@ -6,14 +6,14 @@
 #    By: tfontain <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/26 14:26:04 by tfontain          #+#    #+#              #
-#    Updated: 2017/04/18 06:45:14 by tfontain         ###   ########.fr        #
+#    Updated: 2017/04/21 03:14:56 by tfontain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = lem-in
 CC = clang
 HEADER = ./lemin.h
-FLAG = -Wall -Wextra -Werror -O3
+FLAG = -Wall -Wextra -Werror
 OPTION = -c -I $(HEADER)
 SRC = ./main.c ./parser.c ./parser2.c ./error.c ./get_next_line.c ./solver.c \
 	  ./init.c ./blockfuncs.c

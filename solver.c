@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/20 00:44:43 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:04:16 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,28 +126,30 @@ void			follow_the_weights(t_block *b)
 	int			id;
 	char		*op;
 
-	init_block_ant(b, 0);
+	init_block_weight(b);
 	rank = 1;
 	while (rank)
 	{
-		b = find_block_weight(b, rank);
-		//printf("bonjour\n"); // segfault chelou !
+		if (NULL == (b = find_block_weight(b, rank)))
+			error();
 		id = b->id;
 		while ((b = find_block_weight(b, rank)))
 		{
-			if (b == find_block_id(b, 1))
+			if (b->id == 1)
 			{
 				move_ant_from_start(b);
 				rank = -1;
 				break ;
 			}
-			else if (b->ant)
+			else if (b->ant > 0)
+			{
 				if ((op = move_ant_to_lower_tube(b)) != NULL)
 				{
 					ft_putstr(op);
 					free(op);
 					ft_putchar(' ');
 				}
+			}
 			if (b->id == id)
 				break ;
 		}
