@@ -6,14 +6,11 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 04:13:12 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:36:32 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lemin.h"
-
-#include <stdio.h> // virer
-
 
 /*
 ** find the next block in the structure with the specified weight
@@ -97,7 +94,7 @@ void			move_ant_from_start(t_block *b)
 	t_tubes		*tube;
 	static int	max_ants = -1;
 	char		*tmp;
-	
+
 	if (max_ants == -1)
 		max_ants = b->ant;
 	tube = b->tubes;
@@ -106,18 +103,22 @@ void			move_ant_from_start(t_block *b)
 		if (tube->content->ant == 0)
 			if (b->ant > 0)
 			{
-				tube->content->ant = max_ants - b->ant + 1; // genere le numero de la fourmi
+				tube->content->ant = max_ants - b->ant + 1;
 				--b->ant;
-				ft_putstr(tmp = generate_operation(tube->content->name, tube->content->ant));
+				ft_putstr(tmp = generate_operation(tube->content->name,
+							tube->content->ant));
 				free(tmp);
-				ft_putchar(' '); // sauf si c'est la fin de la ligne
+				ft_putchar(' '); // sauf si c'est la fin de la ligne !
 			}
 		tube = tube->next;
 	}
 }
 
 /*
-**
+** this function is calling the filling ants funcs for each block
+** of the structure,
+** from weight 1 to weight n, where n is the farthest block to the ending block
+** and 1 is the ending block.
 */
 
 void			follow_the_weights(t_block *b)

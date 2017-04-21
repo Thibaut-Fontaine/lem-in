@@ -6,70 +6,17 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 06:34:07 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 23:32:46 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:30:46 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./lemin.h"
 
 /*
-** erase the specified block and free all of this block
-*/
-
-void			erase_block(t_block *b)
-{
-	int			id;
-	t_block		*to_erase;
-	t_tubes		*tube;
-	t_tubes		*next;
-
-	to_erase = b;
-
-	// erase it from the tubes of the another blocks :
-	id = b->id;
-	while ((b = b->nxt))
-	{
-		tube = b->tubes;
-		while (tube)
-		{
-			if (tube->content == to_erase)
-			{
-				next = tube->next;
-				free(tube);
-				tube = next;
-			}
-			else
-				tube = tube->next;
-		}
-		if (b->id == id)
-			break ;
-	}
-
-	//
-
-	// now delete the block himself :
-	b = to_erase;
-	id = b->id;
-	while ((b = b->nxt))
-	{
-		if (b->nxt->id == id)
-			break ;
-	}
-	b->nxt = b->nxt->nxt;
-	tube = to_erase->tubes;
-	while (tube) // erase his tubes
-	{
-		next = tube->next;
-		free(tube);
-		tube = next;
-	}
-	free(to_erase->name);
-	free(to_erase);
-}
-
-/*
-** return 0 if all the block are empty (exept the ending block)
-** return 1 else
+** if there is a block, exept the final block, who still have ants ;
+** then return 0
+** if no block have ants (exept the final block) ;
+** then return 1
 */
 
 int			it_is_finish(t_block *b)
@@ -85,4 +32,25 @@ int			it_is_finish(t_block *b)
 			break ;
 	}
 	return (1);
+}
+
+/*
+** return the next block with a weight upper than 0 (who have weight)
+** and only if at least one of his tube dont have weight yet
+** if there is no, return NULL
+*/
+
+t_block		*next_usable_block(t_block *b)
+{
+	int		id;
+
+	id = b->id;
+	while ((b = b->nxt))
+	{
+		if (b->weight > 0 && have_tube_empty(b))
+			return (b);
+		if (b->id == id)
+			break ;
+	}
+	return (NULL);
 }

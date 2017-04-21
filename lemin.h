@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 23:06:22 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 04:30:34 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct		s_block
 	int				id;
 	char			*name;
 	int				ant;
-	int				check;
 	int				weight;
 	struct s_tubes	*tubes;
 	struct s_block	*nxt;
@@ -51,5 +50,7 @@ int					init_block_weight(t_block *b);
 char				*generate_operation(char *name, int ant);
 void				follow_the_weights(t_block *b);
 int					it_is_finish(t_block *b);
+int					have_tube_empty(t_block *b);
+t_block				*next_usable_block(t_block *b);
 
 #endif
