@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 04:54:44 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 07:54:50 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void			move_ant_from_start(t_block *b)
 	tube = b->tubes;
 	while (tube)
 	{
-		if (tube->content->ant == 0)
+		if (tube->content->ant == 0 && tube->content->weight < b->weight)
 			if (b->ant > 0)
 			{
 				tube->content->ant = max_ants - b->ant + 1;
@@ -132,7 +132,7 @@ void			follow_the_weights(t_block *b)
 	while (rank)
 	{
 		if (NULL == (b = find_block_weight(b, rank)))
-			error();
+			break ;
 		id = b->id;
 		while ((b = find_block_weight(b, rank)))
 		{
@@ -154,6 +154,8 @@ void			follow_the_weights(t_block *b)
 			if (b->id == id)
 				break ;
 		}
+		if (b == NULL)
+			break ;
 		++rank;
 	}
 }

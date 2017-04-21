@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 06:34:07 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 04:55:29 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 07:36:58 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			it_is_finish(t_block *b)
 	id = b->id;
 	while ((b = b->nxt))
 	{
-		if (b->ant != 0 && b != find_block_id(b, 2))
+		if (b->ant != 0 && b->id != 2)
 			return (0);
 		if (b->id == id)
 			break ;
