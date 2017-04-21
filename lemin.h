@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 08:26:20 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 09:08:17 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ int					it_is_finish(t_block *b);
 int					have_tube_empty(t_block *b);
 t_block				*next_usable_block(t_block *b);
 int					gnl_print(const int fd, char **line);
+void				print_out(char *s);
 
 #endif

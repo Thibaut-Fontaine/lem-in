@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/21 08:23:32 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 08:25:39 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 09:07:58 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,11 @@ int			gnl_print(const int fd, char **line)
 	ft_putstr(*line);
 	ft_putchar('\n');
 	return (ret);
+}
+
+void		print_out(char *s)
+{
+	ft_putstr(s);
+	free(s);
+	ft_putchar(' ');
 }

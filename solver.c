@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 08:42:55 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/21 09:11:14 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,10 @@ char			*move_ant_to_lower_tube(t_block *b)
 ** and print the current move at the specified format
 */
 
-void			move_ant_from_start(t_block *b)
+int				move_ant_from_start(t_block *b)
 {
 	t_tubes		*tube;
 	static int	max_ants = -1;
-	char		*tmp;
 
 	if (max_ants == -1)
 		max_ants = b->ant;
@@ -105,13 +104,12 @@ void			move_ant_from_start(t_block *b)
 			{
 				tube->content->ant = max_ants - b->ant + 1;
 				--b->ant;
-				ft_putstr(tmp = generate_operation(tube->content->name,
+				print_out(generate_operation(tube->content->name,
 							tube->content->ant));
-				free(tmp);
-				ft_putchar(' ');
 			}
 		tube = tube->next;
 	}
+	return (1);
 }
 
 /*
@@ -127,7 +125,6 @@ void			follow_the_weights(t_block *b)
 	int			id;
 	char		*op;
 
-	init_block_weight(b);
 	rank = 1;
 	while (rank)
 	{
@@ -136,21 +133,10 @@ void			follow_the_weights(t_block *b)
 		id = b->id;
 		while ((b = find_block_weight(b, rank)))
 		{
-			if (b->id == 1)
-			{
-				move_ant_from_start(b);
-				rank = -1;
+			if (b->id == 1 && move_ant_from_start(b) && (rank = -1) == -1)
 				break ;
-			}
-			else if (b->ant > 0)
-			{
-				if ((op = move_ant_to_lower_tube(b)) != NULL)
-				{
-					ft_putstr(op);
-					free(op);
-					ft_putchar(' ');
-				}
-			}
+			else if (b->ant > 0 && (op = move_ant_to_lower_tube(b)) != NULL)
+				print_out(op);
 			if (b->id == id)
 				break ;
 		}
