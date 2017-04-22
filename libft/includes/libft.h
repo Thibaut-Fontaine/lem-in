@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 20:35:19 by tfontain          #+#    #+#             */
-/*   Updated: 2017/03/26 15:51:02 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/22 05:43:38 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <string.h>
 
-# define OUTPUT_LEN 4096
+# define OUTPUT_LEN 1048576
 
 typedef int			t_bool;
 # define FALSE 0
