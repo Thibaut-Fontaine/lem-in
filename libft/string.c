@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 01:56:59 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/22 04:09:37 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/22 06:15:59 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ char			*ft_sget(int fd)
 	current = ft_get_cur(fd, current);
 	return ((((t_endl*)current->content)->s));
 }
+
+/*
+** note : it will segfault if the asked len is upper than OUTPUT_LEN.
+** this is not protected about that.
+*/
 
 int				ft_swrite(int fd, const void *buf, size_t count)
 {

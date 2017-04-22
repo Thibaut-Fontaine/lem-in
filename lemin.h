@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:37:35 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 09:08:17 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/22 05:57:51 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include "./libft/includes/libft.h"
 # include "./get_next_line.h"
+
+# define PRINT_FILE 1
+# define PRINT_SOLUTION 2
 
 typedef struct		s_tubes
 {

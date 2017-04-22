@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 04:36:40 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/22 05:40:45 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/22 06:17:49 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ int				main(void)
 	t_infos		info;
 
 	info = parser();
-	ft_sprint(1);
+	ft_sprint(PRINT_FILE);
 	ft_putchar('\n');
 	init_block_ant(info.cur, 0);
 	init_block_weight(info.cur);
 	while (it_is_finish(info.cur) == 0)
 	{
 		follow_the_weights(info.cur);
+		ft_putnstr_fdr(ft_sget(PRINT_SOLUTION),
+				ft_strlen(ft_sget(PRINT_SOLUTION)) - 1, STDOUT_FILENO);
+		*ft_sget(PRINT_SOLUTION) = 0;
 		ft_putchar('\n');
 	}
 	return (0);
