@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 08:26:47 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/04/29 17:06:49 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ void			first_line(t_infos *info)
 	int			i;
 
 	i = 0;
-	gnl_print(0, &l);
+	l = NULL;
+	if (gnl_print(0, &l) == 0 || l == NULL)
+		error();
 	while (ft_isdigit(l[i]) && l[i])
 		++i;
 	if (l[i] != 0)
