@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/21 09:11:14 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/05/10 04:55:46 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ int				move_ant_from_start(t_block *b)
 	tube = b->tubes;
 	while (tube)
 	{
-		if (tube->content->ant == 0 && tube->content->weight < b->weight)
+		if ((tube->content->ant == 0 && tube->content->weight < b->weight)
+				|| tube->content->id == 2)
 			if (b->ant > 0)
 			{
 				tube->content->ant = max_ants - b->ant + 1;
