@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/29 17:06:49 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/05/10 06:02:50 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ t_infos			parser(void)
 			error();
 		ft_strdel(&l);
 	}
+	start_end_exist(info.cur);
 	return (tubes_parsing(info, &l));
 }

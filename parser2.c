@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 13:14:34 by tfontain          #+#    #+#             */
-/*   Updated: 2017/04/19 23:42:49 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/05/10 06:00:54 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,15 @@ t_block		*find_block_id(t_block *b, int id)
 			return (NULL);
 	}
 	return (b);
+}
+
+/*
+** call error() if there is no start or end
+*/
+
+void		start_end_exist(t_block *b)
+{
+	if (find_block_id(b, 1) == NULL || find_block_id(b, 2) == NULL)
+		error();
+
 }

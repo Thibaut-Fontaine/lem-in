@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/17 03:00:10 by tfontain          #+#    #+#             */
-/*   Updated: 2017/05/10 04:55:46 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/05/10 05:44:15 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ int				move_ant_from_start(t_block *b)
 				print_out(generate_operation(tube->content->name,
 							tube->content->ant));
 			}
-		tube = tube->next;
+		if (tube->content->id != 2 || b->ant == 0)
+			tube = tube->next;
 	}
 	return (1);
 }
