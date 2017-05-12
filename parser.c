@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 05:13:36 by tfontain          #+#    #+#             */
-/*   Updated: 2017/05/10 06:02:50 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/05/12 13:36:49 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,7 @@ t_infos			parser(void)
 
 	first_line(&info);
 	fl = 0;
-	while (gnl_print(0, &l) == 1 && !(*l != '#' && *l != 'L'
-				&& ft_strchr(l, '-') && !ft_strchr(l, ' ')))
+	while (gnl_print(0, &l) == 1 && (*l == '#' || *l == 'L' || is_room(l)))
 	{
 		if (ft_strequ(l, "##start") && (fl = 1))
 			find_block_id(info.cur, 1) != NULL ? error() : 0;
@@ -130,6 +129,7 @@ t_infos			parser(void)
 			error();
 		ft_strdel(&l);
 	}
+	l == NULL || *l == 0 ? error() : 0;
 	start_end_exist(info.cur);
 	return (tubes_parsing(info, &l));
 }
