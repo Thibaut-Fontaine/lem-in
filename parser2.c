@@ -6,7 +6,7 @@
 /*   By: tfontain <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/13 13:14:34 by tfontain          #+#    #+#             */
-/*   Updated: 2017/05/12 09:59:39 by tfontain         ###   ########.fr       */
+/*   Updated: 2017/05/13 17:02:44 by tfontain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void		start_end_exist(t_block *b)
 {
 	if (find_block_id(b, 1) == NULL || find_block_id(b, 2) == NULL)
 		error();
-
 }
 
 const char	*is_room(const char *s)
@@ -111,14 +110,20 @@ const char	*is_room(const char *s)
 		return (NULL);
 	ret = s;
 	++s;
+	if (*s == '-' || *s == '+')
+		++s;
+	if (!ft_isdigit(*s))
+		return (NULL);
 	while (ft_isdigit(*s))
 		++s;
 	if (*s != ' ')
 		return (NULL);
 	++s;
+	if (*s == '-' || *s == '+')
+		++s;
+	if (!ft_isdigit(*s))
+		return (NULL);
 	while (ft_isdigit(*s))
 		++s;
-	if (*s != 0)
-		return (NULL);
-	return (ret);
+	return (*s != 0 ? NULL : ret);
 }
